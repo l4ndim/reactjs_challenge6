@@ -4,7 +4,7 @@ import outcome from '../../assets/outcome.svg';
 import total from '../../assets/total.svg';
 import Header from '../../components/Header';
 import api from '../../services/api';
-import { formatValue } from '../../utils/formatValue';
+import formatValue from '../../utils/formatValue';
 import { Card, CardContainer, Container, TableContainer } from './styles';
 
 interface Transaction {
@@ -98,8 +98,7 @@ const Dashboard: React.FC = () => {
                 <tr key={transaction.id}>
                   <td className="title">{transaction.title}</td>
                   <td className={transaction.type}>
-                    {transaction.type === "outcome" && "-"} 
-                    {transaction.formattedValue}
+                  {transaction.type === "outcome" ? `- ${transaction.formattedValue}` : transaction.formattedValue}
                   </td>
                   <td>{transaction.category.title}</td>
                   <td>{transaction.formattedDate}</td>
